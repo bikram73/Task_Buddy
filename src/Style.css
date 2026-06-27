@@ -160,6 +160,10 @@ button.secondary {
   color: var(--white);
 }
 
+button.secondary:hover {
+  background-color: #e49b20; /* A darker shade of orange */
+}
+
 button.danger {
   background-color: var(--danger-color);
   color: var(--white);

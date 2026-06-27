@@ -5,24 +5,39 @@ import Progresstracker from './Components/Progresstracker'
 import './Style.css'
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
 
   useEffect(()=>{
     localStorage.setItem("tasks",JSON.stringify(tasks));
-  });
+  }, [tasks]);
 
   const addTask = (task)=>{
     setTasks([...tasks, task])
   }
 
-  const updateTask = (updatedTask, index) => {
-    const newtask = [...tasks];
-    newtask[index] = updatedTask;
-    setTasks(newtask);
+  const onToggleTask = (id) => {
+    setTasks(tasks.map(task => 
+      task.id === id ? { ...task, completed: !task.completed } : task
+    ));
   }
-  const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i != index ))
+
+  const onEditTask = (id) => {
+    const taskToEdit = tasks.find(t => t.id === id);
+    const newText = prompt("Edit your task", taskToEdit.text);
+    if (newText !== null && newText.trim() !== '') {
+      setTasks(tasks.map(task => 
+        task.id === id ? { ...task, text: newText } : task
+      ));
+    }
   }
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id ))
+  }
+
 
   const clearTasks = () => {
     setTasks([]);
@@ -36,8 +51,9 @@ export default function App() {
 
       <Taskform addTask = {addTask}/>
       <Tasklist tasks = {tasks}
-       updateTask = {updateTask} 
-       deleteTask = {deleteTask}/>
+       onToggleTask={onToggleTask}
+       onEditTask={onEditTask}
+       deleteTask={deleteTask} />
       <Progresstracker tasks = {tasks}/>
 
       {tasks.length>0 && (<button className='clear-btn'
