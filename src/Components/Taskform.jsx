@@ -6,7 +6,7 @@ const Taskform = ({ addTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault(); // This line prevents the page from refreshing.
     if (!text.trim()) return;
-    addTask({ id: Date.now(), text, completed: false });
+    addTask({ id: Date.now(), text, completed: false, createdAt: new Date().toISOString() });
     setText('');
   };
 
