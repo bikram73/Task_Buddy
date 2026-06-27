@@ -4,8 +4,8 @@ const Taskform = ({ addTask }) => {
   const [text, setText] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!text.trim()) return; // Prevent adding empty tasks
+    e.preventDefault(); // This line prevents the page from refreshing.
+    if (!text.trim()) return;
     addTask({ id: Date.now(), text, completed: false });
     setText('');
   };
