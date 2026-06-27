@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import Taskform from './Components/Taskform'
 import Tasklist from './Components/Tasklist'
 import Progresstracker from './Components/Progresstracker'
+import Filter from './Components/Filter';
 import './Style.css'
 
 export default function App() {
@@ -9,6 +10,8 @@ export default function App() {
     const savedTasks = localStorage.getItem('tasks');
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
+
+  const [filter, setFilter] = useState('ALL');
 
   useEffect(()=>{
     localStorage.setItem("tasks",JSON.stringify(tasks));
@@ -42,6 +45,17 @@ export default function App() {
   const clearTasks = () => {
     setTasks([]);
   }
+
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'ACTIVE') {
+      return !task.completed;
+    }
+    if (filter === 'COMPLETED') {
+      return task.completed;
+    }
+    return true; // For 'ALL'
+  });
+
   return (
     <div>
       <header>
@@ -50,7 +64,8 @@ export default function App() {
       </header>
 
       <Taskform addTask = {addTask}/>
-      <Tasklist tasks = {tasks}
+      <Filter currentFilter={filter} onFilterChange={setFilter} />
+      <Tasklist tasks = {filteredTasks}
        onToggleTask={onToggleTask}
        onEditTask={onEditTask}
        deleteTask={deleteTask} />
