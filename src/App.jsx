@@ -68,11 +68,13 @@ export default function App() {
   });
 
   return (
-    <div>
+    <div className="app-container">
       <header>
         <h1>Task Buddy</h1>
         <ThemeToggle theme={theme} setTheme={setTheme} />
-        <p><i>Your friendly Task Manager</i></p>
+        <p>
+          <i>Your friendly Task Manager</i>
+        </p>
       </header>
 
       <Taskform addTask = {addTask}/>

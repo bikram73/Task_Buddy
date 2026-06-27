@@ -1,6 +1,6 @@
 /* --- Theme Variables --- */
 body.light {
-  --primary-color: #4a90e2;
+  --primary-color: #4a90e2; /* Blue */
   --secondary-color: #f5a623;
   --background-color: #f4f7f6;
   --container-bg-color: #ffffff;
@@ -15,12 +15,17 @@ body.light {
   --border-radius: 8px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --header-color: var(--primary-color);
-  --theme-toggle-bg: #e0e0e0;
-  --theme-toggle-color: #333;
+  --theme-toggle-bg: #f0f0f0;
+  --theme-toggle-color: #555;
+  --theme-toggle-hover-bg: #e0e0e0;
+  --priority-high-color: #d0021b;
+  --priority-medium-color: #f5a623;
+  --priority-low-color: #4a90e2;
+  --category-color: #777;
 }
 
 body.dark {
-  --primary-color: #bb86fc;
+  --primary-color: #bb86fc; /* Purple */
   --secondary-color: #03dac6;
   --background-color: #121212;
   --container-bg-color: #1e1e1e;
@@ -35,8 +40,13 @@ body.dark {
   --border-radius: 8px;
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   --header-color: var(--primary-color);
-  --theme-toggle-bg: #333;
-  --theme-toggle-color: #fff;
+  --theme-toggle-bg: #2c2c2c;
+  --theme-toggle-color: #e0e0e0;
+  --theme-toggle-hover-bg: #3a3a3a;
+  --priority-high-color: #ff7b72; /* Light Red */
+  --priority-medium-color: #ffc972; /* Light Orange */
+  --priority-low-color: #72a7ff; /* Light Blue */
+  --category-color: #9e9e9e; /* Grey */
 }
 
 body {
@@ -50,7 +60,7 @@ body {
   justify-content: center;
 }
 
-#root > div {
+.app-container {
   max-width: 960px;
   width: 100%;
   background-color: var(--container-bg-color);
@@ -97,6 +107,8 @@ form input[type='text'] {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
+  background-color: var(--task-bg-color);
+  color: var(--font-color);
 }
 
 form input[type='text']:focus {
@@ -191,13 +203,13 @@ form select {
   font-weight: 500;
   color: #fff;
 }
-
-.priority-high { background-color: #d0021b; }
-.priority-medium { background-color: #f5a623; }
-.priority-low { background-color: #4a90e2; }
-
+/* Use text color for badges instead of background for better theme support */
+.priority-high { color: var(--priority-high-color); }
+.priority-medium { color: var(--priority-medium-color); }
+.priority-low { color: var(--priority-low-color); }
 .category {
-  background-color: #777;
+  color: var(--category-color);
+  font-style: italic;
 }
 
 /* Progress Tracker */
@@ -338,14 +350,22 @@ button.danger {
 /* Theme Toggle Button */
 .theme-toggle-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 40px;
   background: var(--theme-toggle-bg);
   color: var(--theme-toggle-color);
   border: 1px solid var(--border-color);
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+  background: var(--theme-toggle-hover-bg);
+  transform: scale(1.1) rotate(15deg);
 }
