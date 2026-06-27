@@ -48,18 +48,18 @@ const Tasklist = ({ tasks, onToggleTask, deleteTask, onEditTask }) => {
                 <span className="task-badge category">{task.category}</span>
               </div>
             </div>
-            <div className="task-details">
+            <div className="task-right-panel">
               <small className="task-timestamp">
                 {formatTimeAgo(task.createdAt)}
               </small>
-            </div>
-            <div className="actions">
-              <button className="secondary" onClick={() => onToggleTask(task.id)}>
-                {task.completed ? 'Undo' : 'Complete'}
-              </button>
-              <button className="danger" onClick={() => deleteTask(task.id)}>
-                Delete
-              </button>
+              <div className="actions">
+                <button className="secondary" onClick={() => onToggleTask(task.id)}>
+                  {task.completed ? 'Undo' : 'Complete'}
+                </button>
+                <button className="danger" onClick={() => deleteTask(task.id)}>
+                  Delete
+                </button>
+              </div>
             </div>
           </li>
         </CSSTransition>)

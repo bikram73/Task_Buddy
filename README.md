@@ -4,9 +4,6 @@ A simple and modern task management application built with React and Vite. Keep 
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://bikram73.github.io/Task_Buddy/)
 
-![Task Buddy Screenshot](./public/screenshot.png)
-*(Suggestion: Add a screenshot of your application and place it in the `public` directory)*
-
 ---
 
 ## ✨ Features

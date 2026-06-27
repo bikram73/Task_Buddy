@@ -129,16 +129,24 @@ form select {
     padding-bottom: 5px;
 }
 
-.task-details {
-  text-align: right;
+.task-right-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
   min-width: 120px;
+  margin-left: 15px;
+}
+
+.task-timestamp {
+  font-size: 0.75rem;
+  color: #999;
+  text-align: right;
 }
 
 .task-item .actions {
     display: flex;
     gap: 10px;
-    justify-content: flex-end;
-    margin-top: 8px;
 }
 
 .task-meta {
