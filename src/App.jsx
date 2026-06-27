@@ -72,7 +72,7 @@ export default function App() {
       <Progresstracker tasks = {tasks}/>
 
       {tasks.length>0 && (<button className='clear-btn'
-      onClick={clearTasks}>clear All Tasks</button>)}
+      onClick={clearTasks}>Clear All Tasks</button>)}
       
     </div>
   )
