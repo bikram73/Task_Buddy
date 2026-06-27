@@ -180,3 +180,23 @@ button.danger {
 .clear-btn:hover {
     background-color: #a80015;
 }
+
+/* Animation styles for react-transition-group */
+.task-item-anim-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.task-item-anim-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+.task-item-anim-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.task-item-anim-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
