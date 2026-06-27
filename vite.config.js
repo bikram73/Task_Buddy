@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/Task_Buddy/',
   plugins: [react()],
-  base: '/TaskMan/', // must match your repo name
 })
