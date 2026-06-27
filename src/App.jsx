@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import Taskform from './Components/Taskform'
 import Tasklist from './Components/Tasklist'
 import Progresstracker from './Components/Progresstracker'
+import ThemeToggle from './Components/ThemeToggle';
 import Filter from './Components/Filter';
 import './Style.css'
 
@@ -11,11 +12,21 @@ export default function App() {
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
 
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'light';
+  });
+
   const [filter, setFilter] = useState('ALL');
 
   useEffect(()=>{
     localStorage.setItem("tasks",JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const addTask = (task)=>{
     setTasks([...tasks, task])
@@ -60,6 +71,7 @@ export default function App() {
     <div>
       <header>
         <h1>Task Buddy</h1>
+        <ThemeToggle theme={theme} setTheme={setTheme} />
         <p><i>Your friendly Task Manager</i></p>
       </header>
 

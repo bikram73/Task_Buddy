@@ -1,20 +1,48 @@
-/* General styles */
-:root {
+/* --- Theme Variables --- */
+body.light {
   --primary-color: #4a90e2;
   --secondary-color: #f5a623;
   --background-color: #f4f7f6;
+  --container-bg-color: #ffffff;
   --font-color: #333;
-  --light-gray: #e0e0e0;
-  --white: #ffffff;
+  --secondary-font-color: #777;
+  --border-color: #e0e0e0;
   --danger-color: #d0021b;
   --success-color: #7ed321;
+  --task-bg-color: #ffffff;
+  --task-completed-bg-color: #f8f8f8;
+  --task-completed-opacity: 0.6;
   --border-radius: 8px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --header-color: var(--primary-color);
+  --theme-toggle-bg: #e0e0e0;
+  --theme-toggle-color: #333;
+}
+
+body.dark {
+  --primary-color: #bb86fc;
+  --secondary-color: #03dac6;
+  --background-color: #121212;
+  --container-bg-color: #1e1e1e;
+  --font-color: #e1e1e1;
+  --secondary-font-color: #a7a9be;
+  --border-color: #333333;
+  --danger-color: #cf6679;
+  --success-color: #4caf50;
+  --task-bg-color: #2a2a2a;
+  --task-completed-bg-color: #252525;
+  --task-completed-opacity: 0.5;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --header-color: var(--primary-color);
+  --theme-toggle-bg: #333;
+  --theme-toggle-color: #fff;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;  background: linear-gradient(to right top, #d3e5ff, #f9f9f9, #d3e5ff);
+    Arial, sans-serif;
+  background: var(--background-color);
   color: var(--font-color);
   margin: 0;
   padding: 20px;
@@ -25,7 +53,7 @@ body {
 #root > div {
   max-width: 960px;
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--container-bg-color);
   padding: 20px 40px;
   box-shadow: var(--box-shadow);
   position: relative;
@@ -35,18 +63,19 @@ body {
 }
 
 
-
 /* Header */
 header {
   text-align: center;
   margin-bottom: 2rem;
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
+  position: relative;
 }
 
 header h1 {
-  color: var(--primary-color);
-  animation: color-cycle 8s linear infinite;
+  color: var(--header-color);
+  /* Disabling animation for better theme compatibility */
+  /* animation: color-cycle 8s linear infinite; */
   margin: 0;
 }
 
@@ -65,7 +94,7 @@ form {
 form input[type='text'] {
   flex-grow: 1;
   padding: 10px 15px;
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
 }
@@ -83,9 +112,9 @@ form input[type='text']:focus {
 
 form select {
   padding: 10px;
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  background-color: var(--white);
+  background-color: var(--container-bg-color);
 }
 /* Task List */
 .task-list {
@@ -98,8 +127,8 @@ form select {
   display: flex;
   align-items: center;
   padding: 15px;
-  background-color: #fff;
-  border: 1px solid var(--light-gray);
+  background-color: var(--task-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   margin-bottom: 10px;
   transition: box-shadow 0.2s ease;
@@ -116,8 +145,8 @@ form select {
 }
 
 .task-item.completed {
-  opacity: 0.6;
-  background-color: #f8f8f8;
+  opacity: var(--task-completed-opacity);
+  background-color: var(--task-completed-bg-color);
 }
 
 .task-item.completed .task-content span {
@@ -140,7 +169,7 @@ form select {
 
 .task-timestamp {
   font-size: 0.75rem;
-  color: #999;
+  color: var(--secondary-font-color);
   text-align: right;
 }
 
@@ -160,7 +189,7 @@ form select {
   padding: 2px 8px;
   border-radius: 12px;
   font-weight: 500;
-  color: var(--white);
+  color: #fff;
 }
 
 .priority-high { background-color: #d0021b; }
@@ -185,7 +214,7 @@ form select {
 }
 
 .progress-tracker progress::-webkit-progress-bar {
-    background-color: var(--light-gray);
+    background-color: var(--border-color);
     border-radius: 6px;
 }
 
@@ -211,7 +240,7 @@ button:hover {
 
 button.primary, form button {
   background-color: var(--primary-color);
-  color: var(--white);
+  color: #fff;
 }
 
 button.primary:hover, form button:hover {
@@ -220,7 +249,7 @@ button.primary:hover, form button:hover {
 
 button.secondary {
   background-color: var(--secondary-color);
-  color: var(--white);
+  color: #fff;
 }
 
 button.secondary:hover {
@@ -229,7 +258,7 @@ button.secondary:hover {
 
 button.danger {
   background-color: var(--danger-color);
-  color: var(--white);
+  color: #fff;
 }
 
 .clear-btn {
@@ -237,7 +266,7 @@ button.danger {
   width: 100%;
   margin-top: 2rem;
   background-color: var(--danger-color);
-  color: var(--white);
+  color: #fff;
 }
 
 .clear-btn:hover {
@@ -262,20 +291,6 @@ button.danger {
   opacity: 0;
   transform: translateX(100%);
   transition: opacity 300ms, transform 300ms;
-}
-
-/* Keyframe Animations */
-@keyframes spin {
-  from { --angle: 0deg; }
-  to { --angle: 360deg; }
-}
-
-@keyframes color-cycle {
-  0%   { color: #4a90e2; } /* primary */
-  25%  { color: #7ed321; } /* success */
-  50%  { color: #f5a623; } /* secondary */
-  75%  { color: #d0021b; } /* danger */
-  100% { color: #4a90e2; } /* back to primary */
 }
 
 
@@ -304,9 +319,9 @@ button.danger {
 }
 
 .filter-btn {
-  background-color: var(--white);
+  background-color: var(--container-bg-color);
   color: var(--primary-color);
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--border-color);
   padding: 8px 16px;
   font-weight: 500;
   cursor: pointer;
@@ -316,6 +331,21 @@ button.danger {
 .filter-btn.active,
 .filter-btn:hover {
   background-color: var(--primary-color);
-  color: var(--white);
+  color: #fff;
   border-color: var(--primary-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--theme-toggle-bg);
+  color: var(--theme-toggle-color);
+  border: 1px solid var(--border-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
