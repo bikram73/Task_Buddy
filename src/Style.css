@@ -18,10 +18,10 @@ body.light {
   --theme-toggle-bg: #f0f0f0;
   --theme-toggle-color: #555;
   --theme-toggle-hover-bg: #e0e0e0;
-  --priority-high-color: #d0021b;
-  --priority-medium-color: #f5a623;
-  --priority-low-color: #4a90e2;
-  --category-color: #777;
+  --priority-high-color: #fff;
+  --priority-medium-color: #fff;
+  --priority-low-color: #fff;
+  --category-color: #fff;
 }
 
 body.dark {
@@ -43,10 +43,10 @@ body.dark {
   --theme-toggle-bg: #2c2c2c;
   --theme-toggle-color: #e0e0e0;
   --theme-toggle-hover-bg: #3a3a3a;
-  --priority-high-color: #ff7b72; /* Light Red */
-  --priority-medium-color: #ffc972; /* Light Orange */
-  --priority-low-color: #72a7ff; /* Light Blue */
-  --category-color: #9e9e9e; /* Grey */
+  --priority-high-color: #fff;
+  --priority-medium-color: #fff;
+  --priority-low-color: #fff;
+  --category-color: #fff;
 }
 
 body {
@@ -203,11 +203,11 @@ form select {
   font-weight: 500;
   color: #fff;
 }
-/* Use text color for badges instead of background for better theme support */
-.priority-high { color: var(--priority-high-color); }
-.priority-medium { color: var(--priority-medium-color); }
-.priority-low { color: var(--priority-low-color); }
+.priority-high { background-color: #d0021b; color: var(--priority-high-color); }
+.priority-medium { background-color: #f5a623; color: var(--priority-medium-color); }
+.priority-low { background-color: #4a90e2; color: var(--priority-low-color); }
 .category {
+  background-color: #777;
   color: var(--category-color);
   font-style: italic;
 }
