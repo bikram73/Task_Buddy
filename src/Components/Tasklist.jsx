@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function formatTimeAgo(dateString) {
@@ -24,13 +24,15 @@ const Tasklist = ({ tasks, onToggleTask, deleteTask, onEditTask }) => {
 
   return (
     <TransitionGroup component="ul" className="task-list">
-      {tasks.map((task) => (
-        <CSSTransition
+      {tasks.map((task) => {
+        const nodeRef = createRef(null);
+        return (<CSSTransition
           key={task.id}
+          nodeRef={nodeRef}
           timeout={300}
           classNames="task-item-anim"
         >
-          <li className={`task-item ${task.completed ? 'completed' : ''}`} >
+          <li ref={nodeRef} className={`task-item ${task.completed ? 'completed' : ''}`} >
             <div className="task-content">
               <span onClick={() => onToggleTask(task.id)}>
                 {task.text}
@@ -48,8 +50,8 @@ const Tasklist = ({ tasks, onToggleTask, deleteTask, onEditTask }) => {
               </button>
             </div>
           </li>
-        </CSSTransition>
-      ))}
+        </CSSTransition>)
+      })}
     </TransitionGroup>
   );
 };
