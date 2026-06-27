@@ -23,7 +23,7 @@ body {
 }
 
 #root > div {
-  max-width: 600px;
+  max-width: 750px;
   width: 100%;
   background-color: var(--white);
   padding: 20px 40px;

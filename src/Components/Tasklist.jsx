@@ -19,7 +19,13 @@ function formatTimeAgo(dateString) {
 
 const Tasklist = ({ tasks, onToggleTask, deleteTask, onEditTask }) => {
   if (!tasks.length) {
-    return <p style={{ textAlign: 'center', margin: '2rem 0' }}>No tasks yet! Add one above.</p>;
+    return (
+      <div style={{ textAlign: 'center', margin: '3rem 0', color: '#666' }}>
+        <h3>Welcome to Task Buddy!</h3>
+        <p>Your task list is currently empty.</p>
+        <p>Get started by adding a new task in the field above.</p>
+      </div>
+    );
   }
 
   return (
