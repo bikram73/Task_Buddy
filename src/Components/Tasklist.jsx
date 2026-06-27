@@ -43,6 +43,12 @@ const Tasklist = ({ tasks, onToggleTask, deleteTask, onEditTask }) => {
               <span onClick={() => onToggleTask(task.id)}>
                 {task.text}
               </span>
+              <div className="task-meta">
+                <span className={`task-badge priority-${task.priority?.toLowerCase()}`}>{task.priority}</span>
+                <span className="task-badge category">{task.category}</span>
+              </div>
+            </div>
+            <div className="task-details">
               <small className="task-timestamp">
                 {formatTimeAgo(task.createdAt)}
               </small>
