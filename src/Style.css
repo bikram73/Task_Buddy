@@ -27,9 +27,14 @@ body {
   width: 100%;
   background-color: var(--white);
   padding: 20px 40px;
-  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--border-radius) + 3px);
+  overflow: hidden;
 }
+
+
 
 /* Header */
 header {
@@ -41,6 +46,7 @@ header {
 
 header h1 {
   color: var(--primary-color);
+  animation: color-cycle 8s linear infinite;
   margin: 0;
 }
 
@@ -210,6 +216,21 @@ button.danger {
   transform: translateX(100%);
   transition: opacity 300ms, transform 300ms;
 }
+
+/* Keyframe Animations */
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
+@keyframes color-cycle {
+  0%   { color: #4a90e2; } /* primary */
+  25%  { color: #7ed321; } /* success */
+  50%  { color: #f5a623; } /* secondary */
+  75%  { color: #d0021b; } /* danger */
+  100% { color: #4a90e2; } /* back to primary */
+}
+
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
