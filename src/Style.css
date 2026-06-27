@@ -201,7 +201,7 @@ form select {
   padding: 2px 8px;
   border-radius: 12px;
   font-weight: 500;
-  color: #fff;
+  color: #fff !important;
 }
 .task-meta .priority-high { background-color: var(--badge-high-bg); }
 .task-meta .priority-medium { background-color: var(--badge-medium-bg); }
